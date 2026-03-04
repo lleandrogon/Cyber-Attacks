@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Dados brutos dos ataques cibernéticos"
+    schema: cyber_attacks
+    loader: mysql
+
+    tables:
+      - name: raw_financial_impact
+        description: "Tabela com dados financeiros dos ataques cibernéticos"
+        columns:
+          - name: incident_id
+            description: Indentificador único do incidente
+          - name: direct_loss_usd
+            description: Perda direta pelo ataque cibernético
+          - name: direct_loss_method
+            description: Método utilizado no ataque
+          - name: ransom_demanded_usd
+            description: Valor de resgate exigido pelos atacantes
+          - name: ransom_paid_usd
+            description: Valor de resgate efetivamente pago aos atacantes
+          - name: ransom_source
+            description: Fonte de onde se originou o crime
+          - name: recovery_cost
+            description: Gastos da empresa com a recuperação pós ataque
+          - name: legal_fees_usd
+            description: Gastos da empresa com serviços jurídicos pós ataque
+          - name: regulatory_fine_usd
+            description: Valor de multa regulatória que a empresa recebeu pelo vazamento de dados
+          - name: insurance_payout_usd
+            description: Valor pago pela seguradora da empresa
+          - name: total_loss_usd
+            description: Gasto total da empresa, incluindo todos os valores
+          - name: total_loss_method
+            description: Método como foi feito o cálculo do valor do gasto total
+          - name: total_loss_lower_bound
+            description: Menor estimativa de valor gasto pela empresa
+          - name: total_loss_upper_bound
+            description: Maior estimativa de valor gasto pela empresa
+          - name: inflation_adjusted_usd
+            description: Valor ajustado pela inflação
+          - name: cpi_index_used
+            description: Índice de inflação (CPI) utilizado no cálculo
+          - name: notes
+            description: Descrição de notícia de ataque cibernético
+          - name: created_at
+            description: Dia e hora que o dado foi inserido no banco de dados
