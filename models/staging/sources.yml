@@ -12,6 +12,9 @@ sources:
         columns:
           - name: incident_id
             description: Indentificador único do incidente
+            tests:
+              - not_null
+              - unique
           - name: direct_loss_usd
             description: Perda direta pelo ataque cibernético
           - name: direct_loss_method
