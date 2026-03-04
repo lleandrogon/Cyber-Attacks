@@ -49,3 +49,74 @@ sources:
             description: Descrição de notícia de ataque cibernético
           - name: created_at
             description: Dia e hora que o dado foi inserido no banco de dados
+
+      - name: raw_incidents_master
+        description: "Tabela com informações gerais de incidentes cibernéticos"
+        columns:
+          - name: incident_id
+            description: Identificador único do incidente
+            tests:
+              - not_null
+              - unique
+          - name: company_name
+            description: Nome da empresa afetada
+          - name: company_revenue_usd
+            description: Receita anual da empresa em USD
+          - name: country_hq
+            description: País da sede da empresa
+          - name: industry_primary
+            description: Código da indústria primária da empresa
+          - name: industry_secondary
+            description: Código da indústria secundária da empresa
+          - name: employee_count
+            description: Número de funcionários da empresa
+          - name: is_public_company
+            description: Indicador se a empresa é pública
+          - name: stock_ticker
+            description: Código de negociação da empresa (ticker)
+          - name: incident_date
+            description: Data em que o incidente ocorreu
+          - name: incident_date_estimated
+            description: Data estimada do incidente, caso não seja conhecida
+          - name: discovery_date
+            description: Data em que o incidente foi descoberto
+          - name: disclosure_date
+            description: Data em que o incidente foi divulgado publicamente
+          - name: attack_vector_primary
+            description: Vetor de ataque primário utilizado
+          - name: attack_vector_secondary
+            description: Vetor de ataque secundário utilizado
+          - name: attack_chain
+            description: Sequência de ataques ou técnicas utilizadas
+          - name: attributed_group
+            description: Grupo ou ator atribuído ao ataque
+          - name: attribution_confidence
+            description: Nível de confiança da atribuição
+          - name: data_compromised_records
+            description: Quantidade de registros de dados comprometidos
+          - name: data_type
+            description: Tipo de dado afetado
+          - name: systems_affected
+            description: Sistemas afetados pelo incidente
+          - name: downtime_hours
+            description: Horas de inatividade provocadas pelo incidente
+          - name: data_source_primary
+            description: Fonte principal da informação
+          - name: data_source_secondary
+            description: Fonte secundária da informação
+          - name: data_source_type
+            description: Tipo da fonte de dados
+          - name: confidence_tier
+            description: Nível de confiança da informação
+          - name: quality_score
+            description: Pontuação de qualidade da informação
+          - name: quality_grade
+            description: Nota de qualidade
+          - name: review_flag
+            description: Indicador de revisão
+          - name: notes
+            description: Notas adicionais sobre o incidente
+          - name: created_at
+            description: Data de criação do registro
+          - name: updated_at
+            description: Data de atualização do registro
