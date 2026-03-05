@@ -54,7 +54,7 @@ sources:
         description: "Tabela com informações gerais de incidentes cibernéticos"
         columns:
           - name: incident_id
-            description: Identificador único do incidente
+            description: Identificador único do incidente cibernético
             tests:
               - not_null
               - unique
@@ -120,3 +120,70 @@ sources:
             description: Data de criação do registro
           - name: updated_at
             description: Data de atualização do registro
+
+      - name: raw_market_impact
+        description: Tabela bruta contendo métricas de mercado financeiro relacionadas à divulgação pública de incidentes cibernéticos. Inclui preços das ações antes e após o evento, retornos anormais, retornos acumulados (CAR), métricas estatísticas, volume negociado indicadores de volatilidade.
+        columns:
+          - name: incident_id
+            description: Identificador único do incidente cibernético.
+            tests:
+              - not_null
+              - unique
+          - name: stock_ticker
+            description: Código de negociação da empresa na bolsa de valores.
+          - name: price_7d_before
+            description: Preço da ação 7 dias antes da data de divulgação do incidente.
+          - name: price_disclosure_day
+            description: Preço da ação no dia da divulgação pública do incidente.
+          - name: price_1d_after
+            description: Preço da ação 1 dia após a divulgação do incidente.
+          - name: price_7d_after
+            description: Preço da ação 7 dias após a divulgação do incidente.
+          - name: price_30d_after
+            description: Preço da ação 30 dias após a divulgação do incidente.
+          - name: volume_avg_30d_baseline
+            description: Volume médio negociado nos 30 dias anteriores ao incidente.
+          - name: volume_disclosure_day
+            description: Volume negociado no dia da divulgação do incidente.
+          - name: sector_index
+            description: Índice setorial ao qual a empresa pertence.
+          - name: sector_return_same_period
+            description: Retorno do índice setorial no mesmo período analisado para o evento.
+          - name: abnormal_return_1d
+            description: Retorno anormal da ação 1 dia após a divulgação.
+          - name: abnormal_return_7d
+            description: Retorno anormal acumulado até 7 dias após a divulgação.
+          - name: abnormal_return_30d
+            description: Retorno anormal acumulado até 30 dias após a divulgação.
+          - name: car_neg1_to_pos1
+            description: Retorno anormal acumulado (CAR) da janela -1 a +1 dias em relação à divulgação.
+          - name: car_0_to_7
+            description: Retorno anormal acumulado (CAR) da janela 0 a +7 dias após a divulgação.
+          - name: car_0_to_30
+            description: Retorno anormal acumulado (CAR) da janela 0 a +30 dias após a divulgação.
+          - name: car_0_to_90
+            description: Retorno anormal acumulado (CAR) da janela 0 a +90 dias após a divulgação.
+          - name: t_statistic_1d
+            description: Estatística t associada ao retorno anormal de 1 dia.
+          - name: t_statistic_30d
+            description: Estatística t associada ao retorno anormal acumulado de 30 dias.
+          - name: p_value_30d
+            description: Valor-p associado ao retorno anormal acumulado de 30 dias.
+          - name: earnings_announcement_within_7d
+            description: Indicador se houve anúncio de resultados financeiros dentro de 7 dias da divulgação do incidente.
+          - name: market_cap_at_disclosure
+            description: Capitalização de mercado da empresa no dia da divulgação do incidente.
+          - name: volume_ratio_disclosure
+            description: Razão entre o volume negociado no dia da divulgação e o volume médio dos 30 dias anteriores.
+          - name: pre_incident_volatility_30d
+            description: Volatilidade histórica da ação nos 30 dias anteriores ao incidente.
+          - name: post_incident_volatility_30d
+            description: Volatilidade histórica da ação nos 30 dias posteriores ao incidente.
+          - name: days_to_price_recovery
+            description: Número de dias necessários para o preço da ação retornar ao nível pré-incidente.
+          - name: notes
+            description: Observações adicionais relacionadas ao comportamento do mercado.
+          - name: created_at
+            description: Data e hora de criação do registro.
+          - name: updated_at
+            description: Data e hora da última atualização do registro.
