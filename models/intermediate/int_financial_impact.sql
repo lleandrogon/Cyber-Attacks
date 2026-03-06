@@ -4,20 +4,17 @@ WITH financial_impact AS (
         direct_loss_usd,
         direct_loss_method,
         CASE
-            WHEN ransom_demanded_usd > 0 
-            THEN TRUE
+            WHEN ransom_demanded_usd > 0 THEN TRUE
             ELSE FALSE
         END AS has_ransom,
         ransom_demanded_usd,
         ransom_paid_usd,
         CASE
-            WHEN ransom_demanded_usd > 0
-            THEN ransom_paid_usd / ransom_demanded_usd
+            WHEN ransom_demanded_usd > 0 THEN ransom_paid_usd / ransom_demanded_usd
             ELSE NULL
         END AS ransom_paid_ratio,
         CASE
-            WHEN ransom_demanded_usd > 0 AND ransom_source IS NULL
-            THEN 'unknown'
+            WHEN ransom_demanded_usd > 0 AND ransom_source IS NULL THEN 'unknown'
             ELSE ransom_source
         END AS ransom_source,
         recovery_cost_usd,
