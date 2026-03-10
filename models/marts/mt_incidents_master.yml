@@ -1,0 +1,128 @@
+version: 2
+
+models:
+  - name: mt_incidents_master
+    description: >
+      Tabela mart principal que consolida informações detalhadas sobre incidentes
+      de ataques cibernéticos. Contém dados sobre a organização afetada, contexto
+      do ataque, características da violação de dados, impacto operacional e
+      qualidade das informações coletadas. Essa tabela serve como base analítica
+      para estudos sobre padrões de ataques, setores mais afetados e severidade
+      de violações de segurança.
+
+    columns:
+      - name: incident_id
+        description: Identificador único do incidente de ataque cibernético.
+        tests:
+          - not_null
+          - unique
+
+      - name: company_name
+        description: Nome da empresa ou organização afetada pelo incidente.
+
+      - name: company_revenue_usd
+        description: Receita anual estimada da empresa, em dólares.
+
+      - name: revenue_size
+        description: Classificação da empresa com base na faixa de receita.
+
+      - name: country_iso2
+        description: Código do país da empresa afetada no padrão ISO 3166-1 alpha-2.
+
+      - name: industry_primary
+        description: Código do setor principal de atuação da empresa.
+
+      - name: industry_secondary
+        description: Código de um setor secundário relacionado à empresa, quando aplicável.
+
+      - name: company_size
+        description: Classificação da empresa com base no seu porte organizacional.
+
+      - name: employee_count
+        description: Número estimado de funcionários da empresa.
+
+      - name: is_public_company
+        description: Indicador que informa se a empresa é de capital aberto (1) ou não (0).
+
+      - name: stock_ticker
+        description: Código de negociação da empresa na bolsa de valores (ticker), quando aplicável.
+
+      - name: incident_date
+        description: Data em que o ataque cibernético ocorreu.
+
+      - name: incident_year
+        description: Ano em que o incidente ocorreu.
+
+      - name: incident_month
+        description: Mês em que o incidente ocorreu.
+
+      - name: incident_date_estimated
+        description: Indicador que informa se a data do incidente é uma estimativa (1) ou uma data confirmada (0).
+
+      - name: disclosure_date
+        description: Data em que o incidente foi divulgado publicamente.
+
+      - name: attack_vector_primary
+        description: Vetor principal utilizado para realizar o ataque (phishing, malware, exploração de vulnerabilidade).
+
+      - name: attack_vector_secondary
+        description: Vetor secundário do ataque, quando múltiplos métodos foram utilizados.
+
+      - name: attack_chain
+        description: Descrição da cadeia ou sequência de técnicas utilizadas no ataque.
+
+      - name: attributed_group
+        description: Grupo ou organização criminosa ao qual o ataque foi atribuído.
+
+      - name: attribution_confidence
+        description: Nível de confiança na atribuição do ataque ao grupo identificado.
+
+      - name: breach_severity
+        description: Classificação da severidade da violação de segurança.
+
+      - name: data_compromised_records
+        description: Número estimado de registros de dados comprometidos no incidente.
+
+      - name: data_type_affected
+        description: Tipo de dado afetado ou comprometido (dados pessoais, financeiros ou credenciais).
+
+      - name: systems_affected
+        description: Sistemas ou infraestruturas impactados pelo ataque.
+
+      - name: downtime_hours
+        description: Tempo estimado de indisponibilidade operacional causado pelo incidente, em horas.
+
+      - name: data_source_primary
+        description: Fonte principal de onde as informações sobre o incidente foram coletadas.
+
+      - name: data_source_secondary
+        description: Fonte secundária utilizada para complementar as informações do incidente.
+
+      - name: data_source_type
+        description: Tipo da fonte de dados utilizada (relatório público, notícia, investigação).
+
+      - name: confidence_tier
+        description: Classificação do nível de confiança geral das informações do incidente.
+
+      - name: quality_score
+        description: Pontuação quantitativa que representa a qualidade e confiabilidade dos dados coletados.
+
+      - name: quality_grade
+        description: Classificação qualitativa da qualidade dos dados (A, B, C).
+
+      - name: review_flag
+        description: Indicador que sinaliza registros que precisam de revisão ou validação adicional.
+
+      - name: notes
+        description: Observações adicionais ou contexto relevante sobre o incidente.
+
+      - name: created_at
+        description: Data e hora em que o registro foi criado na base de dados.
+
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+
+      - name: rank_largest_breaches
+        description: >
+          Ranking dos incidentes com base no número de registros de dados
+          comprometidos, permitindo identificar as maiores violações de dados.

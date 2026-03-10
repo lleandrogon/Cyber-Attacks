@@ -1,0 +1,126 @@
+version: 2
+
+models:
+  - name: mt_market_impact
+    description: >
+      Tabela mart que analisa o impacto de incidentes de ataques cibernéticos
+      no mercado financeiro. Contém métricas relacionadas ao comportamento
+      do preço das ações, volume de negociação, retornos anormais e medidas
+      estatísticas após a divulgação pública de um incidente de segurança.
+      Essa tabela permite avaliar como o mercado reage a violações de dados
+      e ataques cibernéticos em empresas de capital aberto.
+
+    columns:
+      - name: incident_id
+        description: Identificador único do incidente de ataque cibernético.
+        tests:
+          - not_null
+          - unique
+
+      - name: stock_ticker
+        description: Código de negociação da empresa na bolsa de valores (ticker).
+
+      - name: price_7d_pre
+        description: Preço da ação sete dias antes da divulgação do incidente.
+
+      - name: price_on_disclosure_day
+        description: Preço da ação no dia da divulgação pública do incidente.
+
+      - name: return_pct_disclosure
+        description: Variação percentual do preço da ação no dia da divulgação.
+
+      - name: price_1d_post
+        description: Preço da ação um dia após a divulgação do incidente.
+
+      - name: price_7d_post
+        description: Preço da ação sete dias após a divulgação do incidente.
+
+      - name: price_30d_post
+        description: Preço da ação trinta dias após a divulgação do incidente.
+
+      - name: volume_avg_30d_baseline
+        description: Volume médio diário de negociação da ação nos 30 dias anteriores ao incidente.
+
+      - name: volume_disclosure_day
+        description: Volume de negociação da ação no dia da divulgação do incidente.
+
+      - name: sector_index
+        description: Índice setorial utilizado como referência para comparação do desempenho da ação.
+
+      - name: sector_return_same_period
+        description: Retorno do índice setorial no mesmo período analisado.
+
+      - name: immediate_impact
+        description: Indicador que sinaliza se houve impacto imediato no preço da ação após a divulgação do incidente.
+
+      - name: abnormal_return_1d
+        description: Retorno anormal da ação um dia após a divulgação, ajustado pelo desempenho do setor ou mercado.
+
+      - name: abnormal_return_7d
+        description: Retorno anormal acumulado da ação após sete dias da divulgação.
+
+      - name: abnormal_return_30d
+        description: Retorno anormal acumulado da ação após trinta dias da divulgação.
+
+      - name: impact_30d
+        description: Indicador que sinaliza se houve impacto significativo no desempenho da ação após 30 dias.
+
+      - name: car_neg1_to_pos1
+        description: Retorno anormal acumulado (CAR) do dia anterior até um dia após a divulgação do incidente.
+
+      - name: car_0_7
+        description: Retorno anormal acumulado (CAR) do dia da divulgação até sete dias após o evento.
+
+      - name: car_0_30
+        description: Retorno anormal acumulado (CAR) do dia da divulgação até trinta dias após o evento.
+
+      - name: car_0_90
+        description: Retorno anormal acumulado (CAR) do dia da divulgação até noventa dias após o evento.
+
+      - name: t_statistic_1d
+        description: Estatística t utilizada para testar a significância do retorno anormal no horizonte de 1 dia.
+
+      - name: t_statistic_30d
+        description: Estatística t utilizada para testar a significância do retorno anormal no horizonte de 30 dias.
+
+      - name: p_value_30d
+        description: Valor p associado ao teste estatístico do retorno anormal em 30 dias.
+
+      - name: earnings_announcement_within_7d
+        description: Indicador que informa se houve anúncio de resultados financeiros da empresa até 7 dias do incidente.
+
+      - name: market_cap_at_disclosure
+        description: Valor de mercado da empresa no momento da divulgação do incidente.
+
+      - name: volume_ratio_disclosure
+        description: Razão entre o volume negociado no dia da divulgação e o volume médio histórico.
+
+      - name: pre_incident_volatility_30d
+        description: Volatilidade da ação nos 30 dias anteriores ao incidente.
+
+      - name: post_incident_volatility_30d
+        description: Volatilidade da ação nos 30 dias posteriores ao incidente.
+
+      - name: volatility_change_30d
+        description: Variação na volatilidade da ação após o incidente.
+
+      - name: days_to_price_recovery
+        description: Número de dias necessários para que o preço da ação retorne ao nível anterior ao incidente.
+
+      - name: notes
+        description: Observações adicionais sobre o impacto do incidente no mercado.
+
+      - name: created_at
+        description: Data e hora em que o registro foi criado na base de dados.
+
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+
+      - name: rank_worst_market_reaction_1d
+        description: Ranking dos incidentes com pior reação do mercado no horizonte de 1 dia.
+
+      - name: rank_worst_market_reaction_7d
+        description: Ranking dos incidentes com pior reação do mercado no horizonte de 7 dias.
+
+      - name: rank_worst_market_reaction_30d
+        description: Ranking dos incidentes com pior reação do mercado no horizonte de 30 dias.

@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: mt_financial_impact
+    description: >
+      Tabela mart que consolida o impacto financeiro de incidentes de ataques cibernéticos.
+      Inclui perdas diretas, informações sobre pagamento de resgate (ransomware),
+      custos de recuperação, despesas legais, multas regulatórias e compensações
+      de seguros. Essa tabela é utilizada para análises do impacto econômico de
+      ataques cibernéticos e para identificar os incidentes com maiores prejuízos financeiros.
+
+    columns:
+      - name: incident_id
+        description: Identificador único do incidente de ataque cibernético.
+        tests:
+          - not_null
+          - unique
+
+      - name: direct_loss_usd
+        description: Valor estimado da perda financeira direta causada pelo incidente, em dólares.
+
+      - name: direct_loss_method
+        description: Método utilizado para estimar ou calcular a perda financeira direta.
+
+      - name: has_ransom
+        description: >
+          Indicador que informa se o incidente envolveu pedido de resgate
+          (ransomware). Geralmente 1 indica que houve pedido de resgate e 0 indica que não houve.
+
+      - name: ransom_demanded_usd
+        description: Valor do resgate exigido pelos atacantes, em dólares.
+
+      - name: ransom_paid_usd
+        description: Valor do resgate efetivamente pago pela organização vítima, em dólares.
+
+      - name: ransom_paid_ratio
+        description: >
+          Proporção entre o valor pago de resgate e o valor exigido.
+          Permite analisar se o pagamento foi total ou parcial.
+
+      - name: ransom_source
+        description: Fonte da informação sobre o resgate (relatórios, investigações ou divulgações públicas).
+
+      - name: recovery_cost_usd
+        description: Custo estimado para recuperação de sistemas, infraestrutura e operações após o ataque.
+
+      - name: legal_fees_usd
+        description: Custos legais associados ao incidente, como honorários advocatícios e despesas judiciais.
+
+      - name: regulatory_fine_usd
+        description: Valor de multas aplicadas por órgãos reguladores em decorrência do incidente.
+
+      - name: insurance_payout_usd
+        description: Valor pago por seguros cibernéticos para cobrir parte dos prejuízos.
+
+      - name: total_loss_usd
+        description: Valor total estimado de perdas financeiras causadas pelo incidente.
+
+      - name: total_loss_method
+        description: Método utilizado para calcular ou estimar a perda financeira total.
+
+      - name: total_loss_lower_bound
+        description: Limite inferior estimado da perda financeira total.
+
+      - name: total_loss_upper_bound
+        description: Limite superior estimado da perda financeira total.
+
+      - name: inflation_adjusted_usd
+        description: Valor da perda financeira ajustado pela inflação para permitir comparação entre anos diferentes.
+
+      - name: cpi_index_used
+        description: Índice de preços ao consumidor (CPI) utilizado para o ajuste de inflação.
+
+      - name: notes
+        description: Observações adicionais ou contexto sobre o impacto financeiro do incidente.
+
+      - name: created_at
+        description: Data e hora em que o registro foi criado na base de dados.
+
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+
+      - name: rank_total_loss
+        description: >
+          Ranking do incidente com base na perda financeira total,
+          permitindo identificar os ataques cibernéticos com maior impacto econômico.
